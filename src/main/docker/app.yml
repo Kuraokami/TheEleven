@@ -1,0 +1,14 @@
+version: '2'
+services:
+    theeleven-app:
+        image: theeleven
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://theeleven-mysql:3306/theeleven?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    theeleven-mysql:
+        extends:
+            file: mysql.yml
+            service: theeleven-mysql
